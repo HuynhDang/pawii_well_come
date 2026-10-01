@@ -7,18 +7,18 @@
     <!-- Import Google Fonts & FontAwesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            --glass-bg: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --android-color: #3ddc84;
-            --ios-color: #ffffff;
+            --primary-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 1);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --android-color: #10b981;
+            --ios-color: #0f172a;
         }
 
         * {
@@ -41,50 +41,51 @@
             padding: 20px;
         }
 
-        /* Hiệu ứng trang trí nền phía sau */
+        /* Hiệu ứng trang trí nền phía sau sống động hơn */
         body::before, body::after {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(80px);
             z-index: 0;
-            opacity: 0.4;
+            opacity: 0.6;
         }
         body::before {
-            background: #4f46e5;
-            top: -50px;
-            left: -50px;
+            background: #818cf8; /* Xanh Indigo sáng */
+            top: -80px;
+            left: -80px;
         }
         body::after {
-            background: #06b6d4;
-            bottom: -50px;
-            right: -50px;
+            background: #38bdf8; /* Xanh Cyan sáng */
+            bottom: -80px;
+            right: -80px;
         }
 
-        /* Container chính kiểu Glassmorphism */
+        /* Container chính kiểu Glassmorphism Sáng */
         .container {
             position: relative;
             z-index: 1;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             padding: 40px 30px;
             border-radius: 32px;
             width: 100%;
             max-width: 440px;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 
+                        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
         }
 
-        /* Logo Ứng dụng placeholder */
+        /* Logo Ứng dụng */
         .app-logo-wrapper {
             position: relative;
             width: 90px;
             height: 90px;
-            margin: 0 auto 24px;
+            margin: 0 auto 20px;
         }
 
         .app-logo {
@@ -97,10 +98,17 @@
             align-items: center;
             font-size: 40px;
             color: #fff;
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.25);
+            overflow: hidden;
         }
 
-        /* Hiệu ứng radar quét xung quanh logo khi đang tự động chuyển hướng */
+        .app-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Hiệu ứng radar quét xung quanh logo */
         .radar-pulse {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -111,58 +119,62 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
+            0% { transform: scale(1); opacity: 0.8; }
             100% { transform: scale(1.4); opacity: 0; }
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             letter-spacing: -0.5px;
+            color: #0f172a;
         }
 
         .status-text {
             font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-weight: 500;
         }
 
         .status-text i {
             animation: spin 1s linear infinite;
+            color: #6366f1;
         }
 
         @keyframes spin {
             100% { transform: rotate(360deg); }
         }
 
-        /* Nút bấm Store hiện đại */
+        /* Nút bấm Store hiện đại nền sáng */
         .btn-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .btn-store {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 16px 24px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 16px 22px;
             border-radius: 18px;
             text-decoration: none;
             color: var(--text-main);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
 
         .btn-store i {
-            font-size: 28px;
+            font-size: 26px;
             margin-right: 16px;
             width: 32px;
             text-align: center;
@@ -176,54 +188,58 @@
             font-size: 11px;
             text-transform: uppercase;
             color: var(--text-muted);
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             display: block;
             margin-bottom: 2px;
+            font-weight: 600;
         }
 
         .btn-text .main {
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .btn-store .arrow-icon {
             margin-left: auto;
-            font-size: 16px;
-            color: var(--text-muted);
-            transition: transform 0.3s;
+            font-size: 14px;
+            color: #cbd5e1;
+            transition: transform 0.3s, color 0.3s;
         }
 
         /* Hiệu ứng Hover chuẩn chỉnh */
         .btn-store:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.25);
+            background: #f8fafc;
+            border-color: #cbd5e1;
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
         .btn-store:hover .arrow-icon {
             transform: translateX(4px);
-            color: #fff;
-        }
-
-        /* Class đặc biệt để làm nổi bật hệ điều hành tương ứng của user */
-        .btn-store.detected {
-            background: rgba(255, 255, 255, 0.95);
             color: #0f172a;
-            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
-            border-color: #fff;
         }
-        .btn-store.detected .sub { color: #64748b; }
-        .btn-store.detected .arrow-icon { color: #0f172a; }
-        
-        .btn-store.detected#btn-android i { color: #24b865; }
-        .btn-store.detected#btn-ios i { color: #000000; }
 
-        /* Bản quyền / Footer nhỏ */
+        /* Class đặc biệt khi nhận diện đúng hệ điều hành của user */
+        .btn-store.detected {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+            box-shadow: 0 12px 25px rgba(15, 23, 42, 0.2);
+        }
+        
+        .btn-store.detected .sub { color: #94a3b8; }
+        .btn-store.detected .arrow-icon { color: #ffffff; }
+        
+        .btn-store.detected#btn-android i { color: #3ddc84; }
+        .btn-store.detected#btn-ios i { color: #ffffff; }
+
+        /* Bản quyền / Footer */
         .footer {
-            margin-top: 40px;
+            margin-top: 35px;
             font-size: 12px;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -231,14 +247,13 @@
 
     <div class="container">
         <div class="app-logo-wrapper">
-            <!-- Bạn có thể thay icon bên dưới bằng thẻ <img src="link-logo.png"> nếu có logo riêng -->
             <div class="app-logo">
-               <img src="App_Logo.png" style="width: 90px; height: 90px; border-radius: 24px; object-fit: cover; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);">
+               <img src="App_Logo.png" alt="PAWII Logo">
             </div>
             <div class="radar-pulse" id="radar"></div>
         </div>
 
-        <h1 id="app-title">PAWII</h1>
+        <h1>PAWII</h1>
         
         <div class="status-text" id="status-container">
             <i class="fa-solid fa-circle-notch"></i>
@@ -253,7 +268,7 @@
                     <span class="sub">Download on the</span>
                     <span class="main">App Store</span>
                 </div>
-                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                <div class="arrow-icon"><i class="fa-solid fa-chevron-right"></i></div>
             </a>
 
             <!-- NÚT GOOGLE PLAY -->
@@ -263,7 +278,7 @@
                     <span class="sub">Get it on</span>
                     <span class="main">Google Play</span>
                 </div>
-                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                <div class="arrow-icon"><i class="fa-solid fa-chevron-right"></i></div>
             </a>
         </div>
 
@@ -273,7 +288,6 @@
     </div>
 
     <script>
-        // === CẤU HÌNH ĐƯỜNG LINK APP CỦA BẠN TẠI ĐÂY ===
         const iosStoreUrl = "https://apps.apple.com/app/id6762113467";
         const androidStoreUrl = "https://play.google.com/store/apps/details?id=com.raymond.pawii";
 
@@ -284,30 +298,28 @@
             const statusMsg = document.getElementById('status-msg');
             const radar = document.getElementById('radar');
 
-            // 1. Kiểm tra nếu là iOS (iPhone / iPad)
+            // 1. Kiểm tra iOS
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                btnIos.classList.add('detected'); // Làm sáng nút iOS lên thu hút
+                btnIos.classList.add('detected');
                 setTimeout(() => {
                     window.location.href = iosStoreUrl;
-                }, 800); // Chờ hiệu ứng sóng radar 0.8s rồi chuyển hướng
+                }, 800);
             } 
-            // 2. Kiểm tra nếu là Android
+            // 2. Kiểm tra Android
             else if (/android/i.test(userAgent)) {
-                btnAndroid.classList.add('detected'); // Làm sáng nút Android lên thu hút
+                btnAndroid.classList.add('detected');
                 setTimeout(() => {
                     window.location.href = androidStoreUrl;
                 }, 800);
             } 
-            // 3. Nếu lướt bằng Máy tính (Desktop/Laptop) hoặc thiết bị khác
+            // 3. Máy tính hoặc thiết bị khác
             else {
-                // Tắt trạng thái chuyển hướng tự động, giữ giao diện cho họ tự lựa chọn
                 statusMsg.innerText = "Vui lòng chọn nền tảng thiết bị của bạn";
                 document.querySelector('.status-text i').style.display = 'none'; 
                 radar.style.display = 'none';
             }
         }
 
-        // Kích hoạt khi trang tải xong
         window.onload = handleRedirect;
     </script>
 </body>
